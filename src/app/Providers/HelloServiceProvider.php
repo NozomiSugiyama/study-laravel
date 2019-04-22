@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class HelloServiceProvider extends ServiceProvider
 {
@@ -13,10 +14,8 @@ class HelloServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(
-            'hello.index', function ($view) {
-                $view->with('view_message', 'composer message!');
-            }
+        View::composer(
+            'hello.index', 'App\Http\Composers\HelloComposer'
         );
     }
 
