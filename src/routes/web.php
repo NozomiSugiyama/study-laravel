@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 
-Route::get('hello/{msg?}', 'HelloController@index');
+Route::get('hello/{id?}/{pass?}', 'HelloController@index');
