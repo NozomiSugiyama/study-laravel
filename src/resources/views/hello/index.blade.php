@@ -8,15 +8,12 @@ h1 { font-size: 100pt; text-align: right; color: #eee;
 </style>
 </head>
 <body>
-    @isset ($msg)
-    <p>こんにちは {{$msg}}さん。</p>
-    @else
-    <p>なにか書いて下さい。</p>
-    @endisset
-    <form method="POST" action="/hello">
-        {{ csrf_field() }}
-        <input type="text" name="msg">
-        <input type="submit">
-    </form>
+    <h1>Blade/Index</h1>
+    <p>&#064;foreachディレクティブの例</p>
+    <ol>
+    @foreach($data as $item)
+    <li>{{$item}}
+    @endforeach
+    </ol>
 </body>
 </html>
