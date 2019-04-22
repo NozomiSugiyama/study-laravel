@@ -1,0 +1,3 @@
+{
+    "ecs.executablePath": "./vendor/bin/phpcs"
+}
