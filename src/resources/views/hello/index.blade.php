@@ -8,11 +8,11 @@ h1 { font-size: 100pt; text-align: right; color: #eee;
 </style>
 </head>
 <body>
-    @if ($msg != '')
+    @isset ($msg)
     <p>こんにちは {{$msg}}さん。</p>
     @else
     <p>なにか書いて下さい。</p>
-    @endif
+    @endisset
     <form method="POST" action="/hello">
         {{ csrf_field() }}
         <input type="text" name="msg">
