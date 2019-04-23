@@ -7,10 +7,23 @@
 @endsection
 
 @section('content')
-    <p>ここが本文のコンテンツです。</p>
-    <p>Controller value<br>'message' = {{$message}}</p>
-    <p>ViewComposer value<br>'view_message' = {{$view_message}}</p>
-
+    <p>{{$msg}}</p>
+    @if (count($errors) > 0)
+    <p>入力に問題があります。再入力してください。</p>
+    @endif
+    <table>
+        <form action="/hello" method="POST">
+            @if ($errors->has('msg'))
+            <tr>
+                <th>ERROR</th>
+                <td>{{ $errors->first('msg') }}</td>
+            </tr>
+            @endif
+            <tr>
+                <th>Message:</th>
+                <td><input type="text" name="msg" value="{{ old('msg') }}"></td>
+            </tr>
+        </form>
 @endsection
 
 @section('footer')
