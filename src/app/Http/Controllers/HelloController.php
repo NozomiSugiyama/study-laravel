@@ -42,7 +42,7 @@ class HelloController extends Controller
     public function edit(Request $request)
     {
         $item = DB::table('people')->where('id', $request->id)->first();
-        return view('hello.edit', ['form' => $item[0]]);
+        return view('hello.edit', ['form' => $item]);
     }
 
     public function update(Request $request)
@@ -62,15 +62,15 @@ class HelloController extends Controller
 
     public function del(Request $request)
     {
-        $param = ['id' => $request->id];
-        $item = DB::select('select * from people where id = :id', $param);
-        return view('hello.del', ['form' => $item[0]]);
+        $item = DB::table('people')->where('id', $request->id)->first();
+        return view('hello.del', ['form' => $item]);
     }
 
     public function remove(Request $request)
     {
-        $param = ['id' => $request->id];
-        $item = DB::delete('delete from people where id = :id', $param);
+        $item = DB::table('people')
+            ->where('id', $request->id)
+            ->delete();
         return redirect('hello');
     }
 
