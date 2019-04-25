@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('hello', 'HelloController@index');
+Route::get('hello', 'HelloController@index')
+    ->middleware('auth');
 Route::post('hello', 'HelloController@post');
 Route::get('hello/add', 'HelloController@add');
 Route::post('hello/add', 'HelloController@create');
@@ -27,6 +28,11 @@ Route::post('hello/edit', 'HelloController@update');
 Route::get('hello/del', 'HelloController@del');
 Route::post('hello/del', 'HelloController@remove');
 Route::get('hello/show', 'HelloController@show');
+Route::get('hello/rest', 'HelloController@rest');
+Route::get('hello/session', 'HelloController@getSession');
+Route::post('hello/session', 'HelloController@putSession');
+Route::get('hello/auth', 'HelloController@getAuth');
+Route::post('hello/auth', 'HelloController@postAuth');
 
 Route::get('person', 'PersonController@index');
 Route::get('person/find', 'PersonController@find');
@@ -41,3 +47,9 @@ Route::post('person/del', 'PersonController@remove');
 Route::get('board', 'BoardController@index');
 Route::get('board/add', 'BoardController@add');
 Route::post('board/add', 'BoardController@create');
+
+Route::resource('rest', 'RestappController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -14,6 +14,7 @@
     .footer { text-align: right; font-size: 10pt; margin: 10px;
         border-bottom: solid 1px #ccc; color: #ccc; }
     </style>
+    <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 <body>
     <h1>@yield('title')</h1>
