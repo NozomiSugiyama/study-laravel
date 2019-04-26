@@ -24,8 +24,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('test:addUser', ['test-user1', 'test@example.com'])
+            ->everyMinute()
+            ->before(function () {
+                // タスク開始時…
+            })
+            ->appendOutputTo("/var/log/laravel/test/addUser.log");
     }
 
     /**
